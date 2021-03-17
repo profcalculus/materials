@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--todo_list.html-->
+<div class="container">
+    <div class="row">
+        <h2>{{ todo_list.title }}</h2>
+        {% if object_list %}
+        {% for todo in object_list %}
+        <div class="row">
+            <div class="col-12 pt-1">
+                <a href="{% url 'item-update' todo_list.id todo.id %}">
+                    <p>{{todo.title}}</p>
+                </a> (Due {{todo.due_date}})
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>There are no todo items in this list.</p>
+        {% endif %}
+        <p>
+            <input value="Add a new item" class="btn btn-primary m-2" type="button"
+                onclick="location.href='{% url "item-add" todo_list.id %}\';" />
+            <input value="Delete this list" class="btn btn-warning m-2" type="button"
+                onclick="location.href='{% url "list-delete" todo_list.id %}';" />
+        </p>
+    </div>
+</div>
+
+
+{% endblock %}

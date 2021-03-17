@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--todoitem_confirm_delete.html-->
+
+
+<h1>Delete Todo Item</h1>
+
+<p>Are you sure you want to delete the item:</p>
+<p> <b>{{ object.title }}</b></p>
+<p>from the list <i>{{todo_list.title}}</i>?</p>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input value="Yes, delete." class="btn btn-danger m-2" type="submit">
+    <input value="Cancel" class="btn btn-warning m-2" type="button"
+        onclick="location.href='{% url "list" todo_list.id %}';" />
+</form>
+
+
+{% endblock %}

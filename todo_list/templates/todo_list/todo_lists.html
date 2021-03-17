@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--todo_lists.html-->
+<h2>To Do Lists</h2>
+<ul>
+    {% for todolist in object_list %}
+    <li>
+        <a href="{% url 'list' todolist.id %}">
+            <h4>{{ todolist.title}}</h4>
+        </a>
+    </li>
+    {% endfor %} </ul>
+<p>
+    <input value="Add a new list" class="btn btn-primary m-2" type="button"
+        onclick="location.href='{% url "list-add" %}';" />
+</p>
+{% endblock %}

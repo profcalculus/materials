@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--todoitem_list_hide.html-->
+
+<h2>To Do Items</h2>
+<ul>
+    {% for item in object_list %}
+
+    <li><a href="{% url 'edit_item' id=item.id %}"> {{item.title}}</a> due:{{item.due_date}}
+        <p>{{item.description}}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
